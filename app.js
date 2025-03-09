@@ -1,22 +1,20 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const port = 8000;
 
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop')
-
+app.use(cors());
 app.use(express.json());
 
-app.use('/admin', adminRoutes);
-app.use(shopRoutes)
+const flavoringRoutes = require("./routes/flavorings");
+
+app.use("/api/flavorings", flavoringRoutes);
 
 app.use((req, res) => {
-    res.status(404).json({ error: "Route not found" });
-})
+  res.status(404).json({ error: "Route not found" });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
-
-
