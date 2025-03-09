@@ -1,11 +1,19 @@
 exports.getAllProducts = (req, res, next) => {
-    res.send('<p>All Products</p>')
+  res.send("<p>All Products</p>");
 };
 
-exports.getCart = (req, res, next) => {
-    res.send('<p>Cart</p>')
-}
+exports.getProductById = (req, res, next) => {
+  const { productId } = req.params;
+};
 
-exports.getCheckout = (req, res, next) => {
-    res.send('<p>Checkout</p>')
-}
+exports.getCart = (req, res) => {
+  res.json({
+    message: 'Cart'
+  })
+};
+
+exports.getCheckout = (req, res) => {
+  res.send("<p>Checkout</p>");
+};
+
+exports.addToCart = (req, res, next) => {};
